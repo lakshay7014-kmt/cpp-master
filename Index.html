@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>C++ Master — Learn C++ Completely</title>
+  <link rel="stylesheet" href="src/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="loader-inner">
+      <div class="loader-logo">C++</div>
+      <div class="loader-bar"><div class="loader-progress"></div></div>
+      <p class="loader-text">Initializing C++ Master...</p>
+    </div>
+  </div>
+
+  <!-- PARTICLES -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-logo"><span class="logo-c">C</span><span class="logo-pp">++</span> <span class="logo-master">MASTER</span></div>
+    <div class="nav-links">
+      <a href="#" onclick="showSection('home')" class="nav-link active">Home</a>
+      <a href="#" onclick="showSection('topics')" class="nav-link">Topics</a>
+      <a href="#" onclick="showSection('quiz')" class="nav-link">Quiz</a>
+      <a href="#" onclick="showSection('certificate')" class="nav-link">Certificate</a>
+    </div>
+    <div class="nav-score" id="nav-score" style="display:none;">
+      <span>Score: <strong id="nav-score-val">0</strong></span>
+    </div>
+  </nav>
+
+  <!-- HOME SECTION -->
+  <section id="home" class="section active">
+    <div class="hero">
+      <div class="hero-bg-text">C++</div>
+      <div class="hero-content">
+        <div class="hero-badge">🚀 Complete C++ Learning Platform</div>
+        <h1 class="hero-title">
+          Master <span class="gradient-text">C++</span><br/>
+          From Zero to Hero
+        </h1>
+        <p class="hero-subtitle">Explore every concept with animated examples, hands-on quizzes, and earn your certificate!</p>
+        <div class="hero-buttons">
+          <button class="btn-primary" onclick="showSection('topics')">Start Learning →</button>
+          <button class="btn-secondary" onclick="showSection('quiz')">Take Quiz ⚡</button>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><span class="stat-num">20+</span><span class="stat-label">Topics</span></div>
+          <div class="stat"><span class="stat-num">50+</span><span class="stat-label">Examples</span></div>
+          <div class="stat"><span class="stat-num">30</span><span class="stat-label">Questions</span></div>
+          <div class="stat"><span class="stat-num">1</span><span class="stat-label">Certificate</span></div>
+        </div>
+      </div>
+      <div class="hero-code-window">
+        <div class="code-window-bar">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <span class="code-filename">main.cpp</span>
+        </div>
+        <pre class="hero-code"><span class="c-inc">#include</span> <span class="c-str">&lt;iostream&gt;</span>
+<span class="c-key">using namespace</span> std;
+
+<span class="c-key">int</span> <span class="c-fn">main</span>() {
+  <span class="c-comment">// Welcome to C++ Master!</span>
+  cout <span class="c-op">&lt;&lt;</span> <span class="c-str">"Hello, World!"</span> <span class="c-op">&lt;&lt;</span> endl;
+
+  <span class="c-key">int</span> skill = <span class="c-num">0</span>;
+  <span class="c-key">while</span> (skill <span class="c-op">&lt;</span> <span class="c-num">100</span>) {
+    skill<span class="c-op">++</span>;
+    learn();
+  }
+  <span class="c-key">return</span> <span class="c-num">0</span>;
+}</pre>
+      </div>
+    </div>
+
+    <div class="topics-grid-home">
+      <h2 class="section-heading">What You'll Learn</h2>
+      <div class="topic-cards-home">
+        <div class="topic-card-home" onclick="openTopic(0)">
+          <div class="topic-icon">🔤</div>
+          <h3>Basics</h3>
+          <p>Variables, Data Types, I/O</p>
+        </div>
+        <div class="topic-card-home" onclick="openTopic(3)">
+          <div class="topic-icon">🔄</div>
+          <h3>Loops</h3>
+          <p>for, while, do-while</p>
+        </div>
+        <div class="topic-card-home" onclick="openTopic(5)">
+          <div class="topic-icon">⚙️</div>
+          <h3>Functions</h3>
+          <p>Definitions, Recursion</p>
+        </div>
+        <div class="topic-card-home" onclick="openTopic(7)">
+          <div class="topic-icon">🧱</div>
+          <h3>OOP</h3>
+          <p>Classes, Objects, Inheritance</p>
+        </div>
+        <div class="topic-card-home" onclick="openTopic(11)">
+          <div class="topic-icon">📌</div>
+          <h3>Pointers</h3>
+          <p>Memory, References</p>
+        </div>
+        <div class="topic-card-home" onclick="openTopic(14)">
+          <div class="topic-icon">📦</div>
+          <h3>STL</h3>
+          <p>Vectors, Maps, Algorithms</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOPICS SECTION -->
+  <section id="topics" class="section">
+    <div class="topics-layout">
+      <!-- Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">📚 Topics</div>
+        <div class="sidebar-search">
+          <input type="text" id="topic-search" placeholder="Search topics..." oninput="filterTopics(this.value)" />
+        </div>
+        <ul class="topic-list" id="topic-list"></ul>
+      </aside>
+      <!-- Content -->
+      <main class="topic-content" id="topic-content">
+        <div class="topic-placeholder">
+          <div class="placeholder-icon">👈</div>
+          <p>Select a topic from the left to start learning</p>
+        </div>
+      </main>
+    </div>
+  </section>
+
+  <!-- QUIZ SECTION -->
+  <section id="quiz" class="section">
+    <div class="quiz-container" id="quiz-container">
+      <!-- Quiz Start Screen -->
+      <div id="quiz-start">
+        <div class="quiz-start-content">
+          <div class="quiz-icon">⚡</div>
+          <h2>C++ Quiz Challenge</h2>
+          <p>Test your C++ knowledge with 15 questions across all topics.</p>
+          <div class="quiz-info-cards">
+            <div class="qi-card"><strong>15</strong><span>Questions</span></div>
+            <div class="qi-card"><strong>30s</strong><span>Per Question</span></div>
+            <div class="qi-card"><strong>60%</strong><span>To Pass</span></div>
+          </div>
+          <button class="btn-primary btn-large" onclick="startQuiz()">Start Quiz ⚡</button>
+        </div>
+      </div>
+
+      <!-- Quiz Questions -->
+      <div id="quiz-questions" style="display:none;">
+        <div class="quiz-header">
+          <div class="quiz-progress-text">
+            Question <span id="q-num">1</span> of <span id="q-total">15</span>
+          </div>
+          <div class="quiz-timer-wrap">
+            <div class="quiz-timer" id="quiz-timer">30</div>
+          </div>
+          <div class="quiz-score-live">Score: <span id="live-score">0</span></div>
+        </div>
+        <div class="quiz-progress-bar">
+          <div class="quiz-progress-fill" id="quiz-progress-fill"></div>
+        </div>
+        <div class="quiz-question-card">
+          <div class="q-category" id="q-category">Basics</div>
+          <h3 id="q-text" class="q-text"></h3>
+          <div id="q-code" class="q-code-block" style="display:none;"></div>
+          <div class="q-options" id="q-options"></div>
+        </div>
+      </div>
+
+      <!-- Quiz Results -->
+      <div id="quiz-results" style="display:none;">
+        <div class="results-content">
+          <div id="result-icon" class="result-icon">🏆</div>
+          <h2 id="result-title">Quiz Complete!</h2>
+          <div class="result-score-circle">
+            <svg viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#1a1a2e" stroke-width="8"/>
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#00d4ff" stroke-width="8"
+                stroke-dasharray="314" id="score-circle" stroke-dashoffset="314"
+                stroke-linecap="round" transform="rotate(-90 60 60)"/>
+            </svg>
+            <div class="score-text"><span id="final-score">0</span>/<span id="final-total">15</span></div>
+          </div>
+          <p id="result-message" class="result-message"></p>
+          <div class="result-breakdown" id="result-breakdown"></div>
+          <div class="result-buttons">
+            <button class="btn-primary" onclick="restartQuiz()">Try Again 🔄</button>
+            <button class="btn-secondary" id="cert-btn" onclick="showSection('certificate')" style="display:none;">Get Certificate 🏆</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATE SECTION -->
+  <section id="certificate" class="section">
+    <div class="cert-page">
+      <div id="cert-locked" class="cert-locked">
+        <div class="lock-icon">🔒</div>
+        <h2>Certificate Locked</h2>
+        <p>Complete the quiz with 60% or more to unlock your certificate!</p>
+        <button class="btn-primary" onclick="showSection('quiz')">Take Quiz ⚡</button>
+      </div>
+
+      <div id="cert-unlocked" class="cert-unlocked" style="display:none;">
+        <h2 class="cert-page-title">Your Certificate is Ready!</h2>
+        <div class="cert-form">
+          <input type="text" id="cert-name" placeholder="Enter your full name" class="cert-input" />
+          <button class="btn-primary" onclick="generateCertificate()">Generate Certificate 🏆</button>
+        </div>
+        <div id="certificate-canvas-wrap"></div>
+        <button id="download-btn" class="btn-secondary" onclick="downloadCertificate()" style="display:none;margin-top:1.5rem;">⬇ Download Certificate</button>
+      </div>
+    </div>
+  </section>
+
+  <script src="src/topics.js"></script>
+  <script src="src/quiz.js"></script>
+  <script src="src/app.js"></script>
+</body>
+</html>
