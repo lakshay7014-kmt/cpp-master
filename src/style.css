@@ -446,19 +446,32 @@ body {
   .hero-stats { justify-content: center; }
   .hero-subtitle { margin: 0 auto 1.5rem; }
 
+  /* Topics layout — mobile mein tab style */
   .topics-layout {
     grid-template-columns: 1fr;
-    height: auto;
-    min-height: calc(100vh - 65px);
-    overflow: visible;
+    height: calc(100vh - 65px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
   .sidebar {
+    flex-shrink: 0;
     height: auto;
-    max-height: 220px;
+    max-height: 200px;
     border-right: none;
     border-bottom: 1px solid var(--border);
+    overflow: hidden;
   }
-  .topic-content { padding: 1.2rem; }
+  .topic-list {
+    max-height: 120px;
+    overflow-y: auto;
+  }
+  .topic-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.2rem;
+    height: 0; /* flex child ko scroll karne ke liye */
+  }
   .topics-grid-home { padding: 1.5rem 1rem; }
 }
 
@@ -499,6 +512,27 @@ body {
   .topic-nav .btn-secondary { width: 100%; text-align: center; }
 
   .btn-large { padding: 0.85rem 2rem; }
+  /* Topics mobile fix */
+  .topics-layout {
+    height: calc(100vh - 55px);
+  }
+  .sidebar {
+    max-height: 180px;
+  }
+  .topic-list {
+    max-height: 100px;
+  }
+  .sidebar-header {
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+  }
+  .sidebar-search {
+    padding: 0.5rem 0.8rem;
+  }
+  .sidebar-search input {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.8rem;
+  }
 }
 
 /* ============ RESPONSIVE — SMALL MOBILE (max 380px) ============ */
