@@ -31,8 +31,17 @@
     </div>
     <div class="nav-score" id="nav-score" style="display:none;">
       <span>Score: <strong id="nav-score-val">0</strong></span>
+      <button class="hamburger" onclick="toggleMenu()" id="hamburger">
+  <span></span><span></span><span></span>
+</button>
     </div>
   </nav>
+  <div class="mobile-menu" id="mobile-menu">
+  <a href="#" onclick="showSection('home');closeMenu()" class="nav-link">Home</a>
+  <a href="#" onclick="showSection('topics');closeMenu()" class="nav-link">Topics</a>
+  <a href="#" onclick="showSection('quiz');closeMenu()" class="nav-link">Quiz</a>
+  <a href="#" onclick="showSection('certificate');closeMenu()" class="nav-link">Certificate</a>
+</div>
 
   <!-- HOME SECTION -->
   <section id="home" class="section active">

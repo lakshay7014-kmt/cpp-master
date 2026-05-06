@@ -136,3 +136,9 @@ document.querySelectorAll('.topic-card-home').forEach(card => {
   card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
   observer.observe(card);
 });
+function toggleMenu() {
+  document.getElementById('mobile-menu').classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('mobile-menu').classList.remove('open');
+}
